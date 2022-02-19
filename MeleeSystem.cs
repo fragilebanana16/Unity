@@ -9,17 +9,17 @@ public class MeleeSystem : MonoBehaviour
     /// <summary>
     /// Each hit damage done
     /// </summary>
-    public int Damage = 50;
+    public int damage = 50;
 
     /// <summary>
-    /// Show on ui indicating how long is the distance
+    /// Show on ui indicating how long is the ray cast distance
     /// </summary>
-    public float Distance;
+    public float raycastDistance;
 
     /// <summary>
     /// Max hit distance
     /// </summary>
-    public float MaxDistance = 20f;
+    public float maxAttackDistance = 20f;
 
     /// <summary>
     /// Get hit direction
@@ -41,15 +41,14 @@ public class MeleeSystem : MonoBehaviour
             RaycastHit hit;
             if (Physics.Raycast(transform.position, mainCam.transform.TransformDirection(Vector3.forward), out hit))
             {
-                Distance = hit.distance;
+                raycastDistance = hit.distance;
 
-                if (Distance < this.MaxDistance)
+                if (raycastDistance < this.maxAttackDistance)
                 {
-                    hit.transform.SendMessage("ApplyDamage", Damage, SendMessageOptions.DontRequireReceiver);
+                    hit.transform.SendMessage("ApplyDamage", damage, SendMessageOptions.DontRequireReceiver);
                     Debug.DrawLine(transform.position, mainCam.transform.TransformDirection(Vector3.forward), Color.red, 1f);
                 }
             }
-
         }
         else
         {
