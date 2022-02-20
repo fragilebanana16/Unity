@@ -1,3 +1,6 @@
+/// <summary>
+/// Enemy health system
+/// </summary>
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
@@ -42,6 +45,7 @@ public class BananaManHealthSystem : MonoBehaviour
     {
         health -= damage;
         anim.SetBool("takeDmg", true);
+        Debug.Log("banana man takeDmg"); //FIXME:Damage Animation not working
         anim.SetBool("takeDmg", false);
     }
 
