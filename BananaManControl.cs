@@ -50,16 +50,22 @@ public class BananaManControl : MonoBehaviour
     public float moveSpeed = 5.0f;
 
     public float attackRange = 3.0f;
+
+    private float attackTime;
+
+    private float attackRepeatime = 1.0f;
+
     // Start is called before the first frame update
     void Start()
     {
         anim = GetComponent<Animator>();
         anim.SetFloat("speed", 0.3f);
         Debug.Log("set to walk");
+        this.attackTime = Time.time;
     }
 
     // Update is called once per frame
-    void Update()
+    void FixedUpdate()
     {
         this.distance = Vector3.Distance(target.position, transform.position);
         if(this.distance < this.lookAtDistance)
@@ -112,6 +118,11 @@ public class BananaManControl : MonoBehaviour
     }
 
     private void Attack(){
-
+        // for example, 0.1 > 0; attacktime=1.1; 1.2>1.1; attacktime=2.1; so each repeatTime this if will enter
+        if (Time.time > this.attackTime)
+        {
+            this.attackTime = Time.time + this.attackRepeatime;
+            Debug.Log("Attack");
+        }
     }
 }
