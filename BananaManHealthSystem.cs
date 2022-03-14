@@ -57,4 +57,11 @@ public class BananaManHealthSystem : MonoBehaviour
         anim.SetBool("dead", true); // change to death animation
         bananaManCtrl.isDead = true; // stop movement
     }
+
+    /// <summary>
+    /// Test for send msg
+    /// </summary>
+    void TestSendMsg(){
+        Debug.Log("TestSendMsg Ok");
+    }
 }
